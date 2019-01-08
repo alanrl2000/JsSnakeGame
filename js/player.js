@@ -6,7 +6,6 @@ class Player{
 
         this.snake = new Snake(data);
         this.live = true;
-        console.log(this.snake);
     }
 
     move(){
@@ -15,9 +14,7 @@ class Player{
             size.height, size.width);
 
         let nodes = this.snake.getData();
-        console.log(nodes);
         nodes.map( value => {
-            console.log(value);
             value.x += movement[value.direction].x;
             value.y += movement[value.direction].y;
 
@@ -36,7 +33,6 @@ class Player{
     }
 
     turn(direction = 0){
-
         this.snake.updateDirection(direction);
 
     }
@@ -46,7 +42,6 @@ class Player{
         let nodes = this.snake.getData();
 
         nodes.map( value => {
-            console.log(value);
             
             if(
                 value.x >= 0 && value.x <= size.width &&

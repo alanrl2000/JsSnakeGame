@@ -25,7 +25,8 @@ class Snake{
 
     add(data = new Data()){
 
-        this.previous = new Snake(data, this.previous);
+        this.previous = new Snake(this.data, this.previous);
+        this.data = data;
 
     }
 
@@ -36,7 +37,7 @@ class Snake{
                 directions.indexOf(this.data.direction)
             );
         this.data.direction = directions[newDirection];
-
+        
     }
 
     updatePosition(newX = 0, newY = 0){

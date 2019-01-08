@@ -1,7 +1,7 @@
 "use strict";
 
 //Dimensiones
-const size = { height: 20, width: 20 };
+const size = { height: 10, width: 10 };
 
 //Direcciones para un nodo de la serpiente
 const directions = ["up", "right", "down", "left"];

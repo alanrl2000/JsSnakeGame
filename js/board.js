@@ -24,8 +24,12 @@ class Board{
     printBoard(board = new Array()){
 
         board.map( value => {
+            //document.querySelector(".board").innerHTML+= 
+            //    `<p>${value}</p>`;
             console.log(value);
         });
+
+        console.log("-------------------");
 
     }
 
