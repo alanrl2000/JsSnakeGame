@@ -1,15 +1,16 @@
 "use strict";
 
-//Dimensiones
-const size = { height: 10, width: 10 };
-
-//Direcciones para un nodo de la serpiente
-const directions = ["up", "right", "down", "left"];
-
-//Movimiento en 'x' y 'y'
+//Coordenada a la que avanza la serpiente segun su direccion
 const movement = {
-    up: { x: 0, y: -1 },
-    down: { x: 0, y: 1 },
-    right: { x: 1, y: 0 },
-    left: { x: -1, y: 0 },
+    ArrowUp: { x: 0, y: -1 },
+    ArrowRight: { x: 1, y: 0 },
+    ArrowDown: { x: 0, y: 1 },
+    ArrowLeft: { x: -1, y: 0 },
+}
+
+const turn = {
+    ArrowUp: "ArrowDown",
+    ArrowRight: "ArrowLeft",
+    ArrowDown: "ArrowUp",
+    ArrowLeft: "ArrowRigth",
 }

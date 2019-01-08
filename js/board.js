@@ -1,6 +1,5 @@
 "use strict";
 
-
 //Arreglo donde se dibujara la serpiente
 class Board{
 
@@ -23,13 +22,12 @@ class Board{
     //Temp func
     printBoard(board = new Array()){
 
-        board.map( value => {
-            //document.querySelector(".board").innerHTML+= 
-            //    `<p>${value}</p>`;
-            console.log(value);
-        });
+        let html = "";
 
-        console.log("-------------------");
+        for(let col of board)
+            html+=`<h4>${col.toString()}</h4>`;
+
+        document.querySelector(".board").innerHTML = html;
 
     }
 

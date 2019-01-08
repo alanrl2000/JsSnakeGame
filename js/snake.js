@@ -1,81 +1,89 @@
 "use strict";
 
-//Position y direccion de un nodo de la serpiente
-class Data{
-
-    constructor(x = 0, y = 0, direction = 0){
-
-        this.x = x;
-        this.y = y;
-        this.direction = directions[direction];
-
-    }
-
-}
-
-//Clase del control de los puntos de la serpiente
 class Snake{
 
-    constructor(data = new Data(), previous = null){
-        
-        this.previous = previous;
-        this.data = data;
+    constructor(initX, initY, height, width){
+
+        this.long = 1;
+        this.speed = 1;
+        this.itIsAlive = true;
+        this.direction = "ArrowUp";
+        this.position = new Array({ x: initX, y: initY});
+        this.boardSize = {
+            height: height,
+            width: width
+        };
+        this.dot = {
+            x: (Math.floor(Math.random()*100))%(this.boardSize.width),
+            y: (Math.floor(Math.random()*100))%(this.boardSize.height)
+        }
 
     }
 
-    add(data = new Data()){
+    move(){
 
-        this.previous = new Snake(this.data, this.previous);
-        this.data = data;
-
-    }
-
-    updateDirection(newDirection = 0){
-
-        if(this.previous)
-            this.previous.updateDirection(
-                directions.indexOf(this.data.direction)
-            );
-        this.data.direction = directions[newDirection];
-        
-    }
-
-    updatePosition(newX = 0, newY = 0){
-
-        if(this.previous)
-            this.previous.updatePosition(
-                this.data.x, this.data.y
-            );
-        this.data.x = newX;
-        this.data.y = newY;
-
-    }
-
-    getData(){
-
-        let previous = this.previous, array = [];
-
-        array.push(new Data(
-            this.data.x, this.data.y,
-            directions.indexOf(this.data.direction)
-        ));
-
-        while(previous != null ){
-            
-            array.push(new Data(
-                previous.data.x, previous.data.y,
-                directions.indexOf(previous.data.direction)
-            ));
-            previous = previous.previous;
-
+        let newPosition = {
+            x: this.position[0].x + movement[this.direction].x,
+            y: this.position[0].y + movement[this.direction].y
         };
 
-        return array;
+        if(newPosition.x > this.boardSize.width-1 ||
+            newPosition.x < 0 ||
+            newPosition.y > this.boardSize.height-1 ||
+            newPosition.y < 0)
+            this.itIsAlive = false;
+
+        for(let pos of this.position){
+            if(pos.x == newPosition.x && pos.y == newPosition.y){
+                this.long = 1;
+            }
+        }
+        this.position.unshift(newPosition);
+
+        this.clear();
+        if(newPosition.x == this.dot.x && newPosition.y == this.dot.y)
+            this.eat();
 
     }
 
-}
+    eat(){
 
+        this.long++;
+        this.clear();
+        this.dot = {
+            x: (Math.floor(Math.random()*100))%(this.boardSize.width),
+            y: (Math.floor(Math.random()*100))%(this.boardSize.height)
+        }
+
+    }
+
+    print(callback){
+
+        for(let pos of this.position)
+            if(this.itIsAlive)
+                callback(pos.x, pos.y);
+
+    }
+
+    start(positions, cb){
+        
+        if(this.itIsAlive){
+            this.move();
+            this.print(positions);
+            cb();
+        }
+
+    }
+
+    clear(){
+
+        while(this.position.length > this.long)
+            this.position.pop();
+        
+    }
+
+
+}
 
 //Pruebas
 
