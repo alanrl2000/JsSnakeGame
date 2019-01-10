@@ -30,8 +30,11 @@ class Snake{
         if(newPosition.x > this.boardSize.width-1 ||
             newPosition.x < 0 ||
             newPosition.y > this.boardSize.height-1 ||
-            newPosition.y < 0)
-            this.itIsAlive = false;
+            newPosition.y < 0){
+                this.long = 1;
+                newPosition = { x: 5, y: 5};
+                //this.itIsAlive = false;
+            }
 
         for(let pos of this.position){
             if(pos.x == newPosition.x && pos.y == newPosition.y){

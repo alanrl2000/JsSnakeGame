@@ -1,7 +1,7 @@
 "use strict";
 
-let game = new Snake(5, 5, 11, 11);
-let board = Board.prototype.init(11, 11);
+let game = new Snake(5, 5, size.heigth, size.width);
+let board = Board.prototype.init(size.heigth, size.width);
 
 let setBoard = (x, y) => {
     board[y][x] = 1;
@@ -21,10 +21,10 @@ setInterval(function(){
     game.start(setBoard, function(){
 
         Board.prototype.printBoard(board);
-        board = Board.prototype.init(11, 11);
+        board = Board.prototype.init(size.heigth, size.width);
     
     })
 
-}, 500);
+}, 200);
 
 

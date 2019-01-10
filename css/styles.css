@@ -2,5 +2,38 @@ body {
   background: tomato; }
 
 .board {
-  color: white;
-  font: normal 0.8em sans-serif; }
+  font: normal 0.8em sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin: auto;
+  display: grid;
+  width: 500px;
+  height: 500px;
+  padding: 4px;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(12, 1fr);
+  grid-gap: 4px;
+  border: solid 4px white; }
+  .board .snake, .board .dot {
+    background: white;
+    border-radius: 10%; }
+
+@-webkit-keyframes dotBorn {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0); }
+  to {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg); } }
+
+@keyframes dotBorn {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0); }
+  to {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg); } }

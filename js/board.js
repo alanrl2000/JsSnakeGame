@@ -18,16 +18,38 @@ class Board{
 
     }
 
-
-    //Temp func
     printBoard(board = new Array()){
 
+        /*
         let html = "";
 
         for(let col of board)
             html+=`<h4>${col.toString()}</h4>`;
 
         document.querySelector(".board").innerHTML = html;
+        */
+
+
+        let htmlBoard = document.querySelector(".board");
+        while(htmlBoard.firstChild)
+            htmlBoard.removeChild(htmlBoard.firstChild)
+
+        board.map( cols => {
+            cols.map( cells => {
+                let newElement = document.createElement("div");
+                let cssClass = "none";
+
+                if(cells == 1)
+                    cssClass = "snake"
+                else if(cells ==2)
+                    cssClass = "dot"
+
+                newElement.classList.add(cssClass);
+                
+                htmlBoard.appendChild(newElement);
+
+            });
+        })
 
     }
 
