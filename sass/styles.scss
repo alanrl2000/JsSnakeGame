@@ -24,16 +24,5 @@ body{
         border-radius: 10%;
     }
 
-    .dot{
-        //animation: dotBorn 100ms infinite linear;
-    }
 
-}
-
-@keyframes dotBorn{
-    from{
-        transform: rotate(0);
-    }to{
-        transform: rotate(45deg);
-    }
 }
